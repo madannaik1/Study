@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Study · Chemistry</title>
+<style>
+:root{--bg:#f4f3ff;--sf:#fff;--sf2:#edebff;--tx:#1c1845;--mu:#6e6b9a;--bd:#e3e0fa;--pr:#6c5ce7;--pr2:#4834d4;--ac:#00b894;--sh:0 8px 24px rgba(76,60,200,.10);box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0d1f;--sf:#1a1839;--sf2:#252250;--tx:#f1f0ff;--mu:#9f9dcc;--bd:#2d2a5c;--pr:#8b7dff;--sh:0 8px 24px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#0e0d1f;--sf:#1a1839;--sf2:#252250;--tx:#f1f0ff;--mu:#9f9dcc;--bd:#2d2a5c;--pr:#8b7dff;--sh:0 8px 24px rgba(0,0,0,.35)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--bg)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--tx);line-height:1.5;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(60% 40% at 92% -5%,color-mix(in srgb,var(--pr) 30%,transparent),transparent 70%),radial-gradient(50% 35% at -10% 32%,color-mix(in srgb,var(--ac) 20%,transparent),transparent 70%)}
+.app{max-width:640px;margin:0 auto;padding:0 16px 30px}
+.top{display:flex;align-items:center;gap:12px;padding:18px 0 14px}
+.ib{width:42px;height:42px;border-radius:14px;border:1px solid var(--bd);background:var(--sf);color:var(--tx);font-size:18px;cursor:pointer;box-shadow:var(--sh);display:grid;place-items:center;text-decoration:none;flex:none}
+.top div{flex:1}h1{font-size:26px;font-weight:800;letter-spacing:-.8px;line-height:1.1}
+.sub{font-size:13px;color:var(--mu)}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:24px;padding:18px;margin-bottom:14px;box-shadow:var(--sh);animation:in .45s both}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.hero{position:relative;overflow:hidden;border:0;color:#fff;border-radius:28px;box-shadow:0 18px 40px rgba(72,52,212,.38);background:linear-gradient(135deg,#12c9a6,#0a8f7a 55%,#5a45e0 150%)}
+.hero::after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.12);right:-50px;top:-60px}
+.hero>*{position:relative;z-index:1}
+.hero .big{font-size:38px;font-weight:800;letter-spacing:-1px}
+.hero p{opacity:.9;font-size:13px}
+.bar{height:8px;background:rgba(255,255,255,.22);border-radius:9px;overflow:hidden;margin:12px 0 14px}
+.bar i{display:block;height:100%;width:0;background:#fff;border-radius:9px;transition:width .5s}
+.mini{display:flex;gap:8px}
+.mini span{flex:1;background:rgba(255,255,255,.16);border-radius:14px;padding:8px 6px;text-align:center;font-size:11px}
+.mini b{display:block;font-size:17px}
+.tw{overflow-x:auto;border-radius:20px;border:1px solid var(--bd);background:var(--sf);box-shadow:var(--sh)}
+table{width:100%;border-collapse:collapse;min-width:340px}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--mu);background:var(--sf2);padding:12px 6px;text-align:center;font-weight:700}
+th:nth-child(2),td:nth-child(2){text-align:left;padding-left:8px}
+td{padding:11px 6px;border-top:1px solid var(--bd);text-align:center;font-size:14px}
+td:first-child{color:var(--mu);font-weight:700;width:34px}
+td:nth-child(2){font-weight:600;min-width:130px}
+tr.all td{background:color-mix(in srgb,var(--ac) 12%,var(--sf))}
+.chk{width:28px;height:28px;border-radius:9px;border:2px solid var(--bd);background:none;cursor:pointer;color:#fff;font-size:15px;line-height:1;transition:.2s}
+.chk.on{background:var(--ac);border-color:var(--ac);animation:pop .3s}
+@keyframes pop{50%{transform:scale(1.25)}}
+.btn{border:0;border-radius:14px;padding:11px 18px;font-size:14px;font-weight:600;cursor:pointer;background:var(--sf2);color:var(--tx);margin-top:14px;width:100%}
+.ft{text-align:center;font-size:12px;color:var(--mu);padding:20px 0 4px;font-weight:600;letter-spacing:.3px}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <a class="ib" href="index.html" aria-label="Back to Study">&larr;</a>
+    <div><h1>Chemistry</h1><p class="sub">Class 12 unit tracker</p></div>
+    <button class="ib" id="th" aria-label="Switch theme">&#9790;</button>
+  </header>
+
+  <div class="card hero">
+    <p>Overall progress</p>
+    <div class="big" id="pc">0%</div>
+    <div class="bar"><i id="pb"></i></div>
+    <div class="mini">
+      <span><b id="m0">0/10</b>Completed</span>
+      <span><b id="m1">0/10</b>Revision</span>
+      <span><b id="m2">0/10</b>Practice</span>
+    </div>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>No.</th><th>Unit Name</th><th>Completed</th><th>Revision</th><th>Question Practice</th></tr></thead>
+      <tbody id="tb"></tbody>
+    </table>
+  </div>
+  <button class="btn" id="rs">Reset all</button>
+  <footer class="ft">Created by Madan</footer>
+</div>
+
+<script>
+var CH=['Solutions','Electro Chemistry','Chemical Kinetics','The d- and f- Block Elements','Co-ordination Compounds','Haloalkanes and Haloarenes','Alcohols, Phenols and Ethers','Aldehydes, Ketones and Carboxylic acids','Amines','Biomolecules'];
+var K='chemistry_v1',P=CH.map(function(){return[0,0,0]});
+try{var r=JSON.parse(localStorage.getItem(K)||'null');if(r&&r.length===CH.length)P=r}catch(e){}
+function save(){try{localStorage.setItem(K,JSON.stringify(P))}catch(e){}}
+var th=null;try{th=localStorage.getItem('ss_theme')}catch(e){}
+if(th)document.documentElement.setAttribute('data-theme',th);
+document.getElementById('th').onclick=function(){
+  var a=document.documentElement.getAttribute('data-theme'),dark=a==='dark'||(!a&&matchMedia('(prefers-color-scheme:dark)').matches),n=dark?'light':'dark';
+  document.documentElement.setAttribute('data-theme',n);try{localStorage.setItem('ss_theme',n)}catch(e){}
+};
+function toggle(i,j){P[i][j]=P[i][j]?0:1;save();render()}
+function render(){
+  document.getElementById('tb').innerHTML=CH.map(function(n,i){
+    var all=P[i][0]&&P[i][1]&&P[i][2];
+    return '<tr'+(all?' class="all"':'')+'><td>'+(i+1)+'</td><td>'+n.replace(/&/g,'&amp;')+'</td>'+[0,1,2].map(function(j){
+      return '<td><button class="chk'+(P[i][j]?' on':'')+'" onclick="toggle('+i+','+j+')" aria-pressed="'+(P[i][j]?'true':'false')+'" aria-label="'+['Completed','Revision','Question Practice'][j]+', unit '+(i+1)+'">'+(P[i][j]?'&#10003;':'')+'</button></td>'
+    }).join('')+'</tr>'
+  }).join('');
+  var tot=0;
+  for(var j=0;j<3;j++){var c=P.filter(function(x){return x[j]}).length;tot+=c;document.getElementById('m'+j).textContent=c+'/'+CH.length}
+  var pct=Math.round(tot/(CH.length*3)*100);
+  document.getElementById('pc').textContent=pct+'%';document.getElementById('pb').style.width=pct+'%';
+}
+var rb=document.getElementById('rs'),rt;
+rb.onclick=function(){
+  if(rb.dataset.c){P=CH.map(function(){return[0,0,0]});save();render();rb.textContent='Reset all';delete rb.dataset.c;clearTimeout(rt)}
+  else{rb.dataset.c=1;rb.textContent='Tap again to confirm reset';rt=setTimeout(function(){rb.textContent='Reset all';delete rb.dataset.c},3000)}
+};
+render();
+</script>
+</body>
+</html>
